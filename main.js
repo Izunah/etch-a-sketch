@@ -18,10 +18,23 @@ function createGrid(sideLength) {
 }
 
 function etchBox() {
-    this.classList.add("grid-box-etched");
-    const hsl = randomColor();
-    this.style.setProperty("background-color", 
-    `hsl(${hsl[0]}, ${hsl[1]}, ${hsl[2]})`);
+    if (!this.classList.contains("grid-box-etched")) {
+        this.classList.add("grid-box-etched");
+        const hsl = randomColor();
+        this.style.setProperty("background-color", 
+        `hsl(${hsl[0]}, ${hsl[1]}, ${hsl[2]})`);
+    }
+    else
+    {
+        let rgb = getComputedStyle(this).getPropertyValue("background-color");
+        rgb = rgb.split(", ");
+        rgb[0] = rgb[0].replace("rgb(", "");
+        rgb[0] = Math.max(parseInt(rgb[0], 10) - 26, 0);
+        rgb[1] = Math.max(parseInt(rgb[1], 10) - 26, 0);
+        rgb[2] = Math.max(parseInt(rgb[2], 10) - 26, 0);
+        this.style.setProperty("background-color", 
+        `rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]})`);
+    }
 }
 
 function promptUser() {
