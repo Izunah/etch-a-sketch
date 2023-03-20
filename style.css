@@ -1,3 +1,36 @@
-* {
+:root {
+    --overallSize: 600px;
+    --boxCount: 1;
+    --boxSize: 50px;
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 36px;
+}
+
+.create-grid {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 6px 24px;
+}
+
+.grid-container {
+    background-color: black;
+    outline-width: 2px;
+    outline-style: solid;
+    display: grid;
+    grid-template-columns: repeat(var(--boxCount), var(--boxSize));
+    width: var(--overallSize);
+    height: var(--overallSize);
+}
+
+.grid-box {
+    background-color: white;
+}
+
+.grid-box-etched {
     background-color: red;
 }
